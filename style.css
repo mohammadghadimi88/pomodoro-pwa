@@ -48,7 +48,13 @@ body {
     text-align: center;
 }
 
-#muteBtn.muted {
-    background: #555;
-    color: white;
+#muteBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#muteBtn svg {
+    vertical-align: middle;
 }
