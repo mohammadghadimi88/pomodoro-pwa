@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    margin: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+#timer {
+    font-size: 5em;
+    margin: 20px 0;
+}
+
+.controls button, .settings button {
+    background: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 8px;
+    margin: 5px;
+    cursor: pointer;
+    color: #333;
+    transition: background 0.3s;
+}
+
+.controls button:hover, .settings button:hover {
+    background: #ffd6e0;
+}
+
+.settings {
+    margin-top: 20px;
+}
+
+.settings input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+}
