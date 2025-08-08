@@ -7,7 +7,7 @@ let timerInterval = null;
 const timerDisplay = document.getElementById('timer');
 const statusDisplay = document.getElementById('status');
 const dingSound = document.getElementById('dingSound');
-const audio = document.getElementById('pomodoro-audio');
+const audio = document.getElementById('dingSound');
 const btn = document.getElementById('mute-unmute-btn');
 const icon = document.getElementById('mute-icon');
 
