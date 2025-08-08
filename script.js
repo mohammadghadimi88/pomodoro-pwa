@@ -7,6 +7,21 @@ let timerInterval = null;
 const timerDisplay = document.getElementById('timer');
 const statusDisplay = document.getElementById('status');
 const dingSound = document.getElementById('dingSound');
+const audio = document.getElementById('pomodoro-audio');
+const btn = document.getElementById('mute-unmute-btn');
+const icon = document.getElementById('mute-icon');
+
+btn.addEventListener('click', () => {
+  audio.muted = !audio.muted;
+  if (audio.muted) {
+    icon.classList.remove('fa-volume-up');
+    icon.classList.add('fa-volume-mute');
+  } else {
+    icon.classList.remove('fa-volume-mute');
+    icon.classList.add('fa-volume-up');
+  }
+});
+
 
 function updateDisplay() {
     let minutes = Math.floor(remainingTime / 60);
