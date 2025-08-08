@@ -1,4 +1,13 @@
 let isMuted = false;
+const muteBtn = document.getElementById('muteBtn');
+const iconOn = document.getElementById('icon-sound-on');
+const iconOff = document.getElementById('icon-sound-off');
+
+muteBtn.addEventListener('click', () => {
+    isMuted = !isMuted;
+    iconOn.style.display = isMuted ? 'none' : 'inline';
+    iconOff.style.display = isMuted ? 'inline' : 'none';
+});
 let focusTime = 25 * 60;
 let breakTime = 5 * 60;
 let remainingTime = focusTime;
