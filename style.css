@@ -47,3 +47,8 @@ body {
     padding: 5px;
     text-align: center;
 }
+
+#muteBtn.muted {
+    background: #555;
+    color: white;
+}
