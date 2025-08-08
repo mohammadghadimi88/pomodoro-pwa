@@ -1,3 +1,4 @@
+let isMuted = false;
 let focusTime = 25 * 60;
 let breakTime = 5 * 60;
 let remainingTime = focusTime;
@@ -23,7 +24,7 @@ function startTimer() {
         if (remainingTime <= 0) {
             clearInterval(timerInterval);
             timerInterval = null;
-            dingSound.play();
+            if (!isMuted) dingSound.play();
             if ("vibrate" in navigator) navigator.vibrate(300);
 
             if (isFocus) {
@@ -53,6 +54,12 @@ function resetTimer() {
     updateDisplay();
 }
 
+document.getElementById('muteBtn').addEventListener('click', () => {
+    isMuted = !isMuted;
+    const muteBtn = document.getElementById('muteBtn');
+    muteBtn.textContent = isMuted ? 'Unmute' : 'Mute';
+    muteBtn.classList.toggle('muted', isMuted);
+});
 document.getElementById('startBtn').addEventListener('click', startTimer);
 document.getElementById('pauseBtn').addEventListener('click', pauseTimer);
 document.getElementById('resetBtn').addEventListener('click', resetTimer);
