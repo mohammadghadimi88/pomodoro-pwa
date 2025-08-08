@@ -1,6 +1,3 @@
-let cycleCount = 0;
-const cycleDisplay = document.getElementById('cycleCount');
-
 let focusTime = 25 * 60;
 let breakTime = 5 * 60;
 let remainingTime = focusTime;
@@ -33,25 +30,27 @@ function updateDisplay() {
     .padStart(2, '0')}`;
 }
 
-if (remainingTime <= 0) {
-  clearInterval(timerInterval);
-  timerInterval = null;
-  dingSound.play();
-  if ('vibrate' in navigator) navigator.vibrate(300);
+function startTimer() {
+  if (timerInterval) return;
 
-  // سوییچ بین فوکوس و استراحت
-  isFocus = !isFocus;
-  remainingTime = isFocus ? focusTime : breakTime;
+  timerInterval = setInterval(() => {
+    remainingTime--;
+    updateDisplay();
 
-  // 🔻 فقط وقتی چرخه کامل شد (یعنی از استراحت برگشت به فوکوس)
-  if (isFocus) {
-    cycleCount++;
-    cycleDisplay.textContent = `Cycles: ${cycleCount}`;
-  }
+    if (remainingTime <= 0) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      dingSound.play();
+      if ('vibrate' in navigator) navigator.vibrate(300);
 
-  startTimer();
+      // سوییچ بین فوکوس و استراحت
+      isFocus = !isFocus;
+      remainingTime = isFocus ? focusTime : breakTime;
+
+      startTimer(); // اجرای تایمر بعدی به صورت خودکار
+    }
+  }, 1000);
 }
-
 
 function pauseTimer() {
   clearInterval(timerInterval);
@@ -62,11 +61,8 @@ function resetTimer() {
   pauseTimer();
   isFocus = true;
   remainingTime = focusTime;
-  cycleCount = 0;
-  cycleDisplay.textContent = `Cycles: ${cycleCount}`;
   updateDisplay();
 }
-
 
 document.getElementById('startBtn').addEventListener('click', startTimer);
 document.getElementById('pauseBtn').addEventListener('click', pauseTimer);
